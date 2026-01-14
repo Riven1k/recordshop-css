@@ -1,0 +1,58 @@
+.record-panel {
+  border: 1px solid #ccc;
+  padding: 1.2rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  background: #fafafa;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+input {
+  padding: 6px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.button-row {
+  grid-column: span 2;
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:first-child {
+  background: #1976d2;
+  color: white;
+}
+
+button:last-child {
+  background: #777;
+  color: white;
+}
+
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}

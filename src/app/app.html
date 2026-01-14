@@ -1,0 +1,17 @@
+<nav class="navbar">
+
+  <div class="nav-left">
+    <a (click)="goRecords()" *ngIf="canView()">Records</a>
+    <a (click)="goAdd()" *ngIf="canAdd()">Add Record</a>
+  </div>
+
+  <div class="nav-right">
+    <span class="role-label" *ngIf="auth.isLoggedIn()">Role: {{ auth.getRole() }}</span>
+
+    <button *ngIf="!auth.isLoggedIn()" (click)="goLogin()">Login</button>
+    <button *ngIf="auth.isLoggedIn()" (click)="logout()">Logout</button>
+  </div>
+
+</nav>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,27 @@
+<div class="record-card">
+
+  <h2 class="title">{{ record()?.title | lowercase }}</h2>
+
+  <div class="details">
+    <div class="row"><span>Artist:</span><strong>{{ record()?.artist }}</strong></div>
+    <div class="row"><span>Genre:</span><strong class="badge genre">{{ record()?.genre }}</strong></div>
+    <div class="row"><span>Format:</span><strong>{{ record()?.format }}</strong></div>
+    <div class="row"><span>Year:</span><strong>{{ record()?.releaseYear }}</strong></div>
+    <div class="row"><span>Price:</span><strong>€{{ record()?.price }}</strong></div>
+    <div class="row"><span>Stock:</span><strong>{{ record()?.stockQty ?? 0 | stockStatus }}</strong></div>
+  </div>
+
+  <h3>Customer Details</h3>
+  <div class="details">
+    <div class="row"><span>ID:</span><strong>{{ record()?.customerId }}</strong></div>
+    <div class="row"><span>Name:</span><strong>{{ record()?.customerFirstName }} {{ record()?.customerLastName }}</strong></div>
+    <div class="row"><span>Email:</span><strong>{{ record()?.customerEmail }}</strong></div>
+  </div>
+
+  <div class="actions">
+    <button class="secondary" (click)="back()">Back</button>
+    <button class="primary" (click)="update()" [disabled]="!canUpdate()">Update</button>
+    <button class="danger" (click)="delete()" [disabled]="!canDelete()">Delete</button>
+  </div>
+
+</div>

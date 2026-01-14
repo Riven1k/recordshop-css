@@ -1,0 +1,88 @@
+<h2>Update Record</h2>
+
+<div class="record-panel" *ngIf="record() as r">
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid">
+
+    <div class="form-row">
+      <label>Title</label>
+      <input formControlName="title" type="text">
+    </div>
+
+    <div class="form-row">
+      <label>Artist</label>
+      <input formControlName="artist" type="text">
+    </div>
+
+    <div class="form-row">
+      <label>Genre</label>
+      <input formControlName="genre" type="text">
+    </div>
+
+    <div class="form-row">
+      <label>Format</label>
+      <input formControlName="format" type="text">
+    </div>
+
+    <div class="form-row">
+      <label>Release Year</label>
+      <input formControlName="releaseYear" type="number">
+    </div>
+
+    <div class="form-row">
+      <label>Price (€)</label>
+      <input formControlName="price" type="number" step="0.01">
+    </div>
+
+    <div class="form-row">
+      <label>Stock Qty</label>
+      <input formControlName="stockQty" type="number">
+    </div>
+
+    <div></div>
+
+    <h3>Customer Details (optional)</h3>
+
+    <div></div>
+    <div class="form-row">
+        <label>Customer ID</label>
+        <input formControlName="customerId" type="text">
+    </div>
+    <div class="error" *ngIf="form.controls.customerId.invalid && form.controls.customerId.touched">
+         Format must be digits followed by a letter (e.g., 1234A).
+    </div>
+
+    <div class="form-row">
+        <label>Customer First Name</label>
+        <input formControlName="customerFirstName" type="text">
+    </div>
+
+    <div class="form-row">
+        <label>Customer Last Name</label>
+        <input formControlName="customerLastName" type="text">
+    </div>
+
+    <div class="form-row">
+        <label>Customer Contact Number</label>
+        <input formControlName="customerContact" type="text">
+    </div>
+    <div class="error" *ngIf="form.controls.customerContact.invalid && form.controls.customerContact.touched">
+        Contact must be numeric and at least 8 digits long.
+    </div>
+
+
+    <div class="form-row">
+        <label>Customer Email</label>
+        <input formControlName="customerEmail" type="email">
+    </div>
+    <div class="error" *ngIf="form.controls.customerEmail.invalid && form.controls.customerEmail.touched">
+        Invalid email format.
+    </div>
+
+    <div class="button-row">
+      <button type="submit" [disabled]="form.invalid">Save Changes</button>
+      <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+
+  </form>
+</div>
