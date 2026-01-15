@@ -6,28 +6,38 @@ import { Record } from '../models/record.models';
   providedIn: 'root'
 })
 export class RecordsService {
-  private readonly API_URL = 'http://localhost:3000/api';
+
+  private baseUrl = 'https://recordshop-css.onrender.com/api';
+  private formatsUrl = 'https://recordshop-css.onrender.com/api';
+  private genresUrl = 'https://recordshop-css.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
   getRecords() {
-    return this.http.get<Record[]>(`${this.API_URL}/records`);
-  }
-
-  deleteRecord(id: number) {
-    return this.http.delete(`${this.API_URL}/records/${id}`);
+    return this.http.get<Record[]>(this.baseUrl);
   }
 
   getRecord(id: number) {
-    return this.http.get<Record>(`${this.API_URL}/records/${id}`);
-  }
-
-  updateRecord(id: number, record: Record) {
-    return this.http.put(`${this.API_URL}/records/${id}`, record);
+    return this.http.get<Record>(`${this.baseUrl}/${id}`);
   }
 
   addRecord(record: Record) {
-    return this.http.post(`${this.API_URL}/records`, record);
+    return this.http.post(this.baseUrl, record);
   }
-  
+
+  updateRecord(id: number, record: Record) {
+    return this.http.put(`${this.baseUrl}/${id}`, record);
+  }
+
+  deleteRecord(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  getFormats() {
+    return this.http.get<string[]>(this.formatsUrl);
+  }
+
+  getGenres() {
+    return this.http.get<string[]>(this.genresUrl);
+  }
 }

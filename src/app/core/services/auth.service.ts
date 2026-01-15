@@ -7,15 +7,16 @@ import { User } from '../models/user.models';
 })
 export class AuthService {
 
-  private readonly API_URL = 'http://localhost:3000/api';
+  private loginUrl = 'https://recordshop-css.onrender.com/api/login';
 
   currentUser = signal<User | null>(null);
 
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.http.post<User>(`${this.API_URL}/login`, { email, password });
+    return this.http.post<User>(this.loginUrl, { email, password });
   }
+
 
   logout() {
     this.currentUser.set(null);
@@ -29,3 +30,4 @@ export class AuthService {
     return this.currentUser()?.role ?? null;
   }
 }
+
